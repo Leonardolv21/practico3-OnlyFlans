@@ -1,27 +1,25 @@
 {
-  "name": "backend",
+  "name": "onlyflans-backend",
   "version": "1.0.0",
+  "description": "Backend para la plataforma OnlyFlans",
   "main": "index.js",
-  "type": "commonjs",
   "scripts": {
     "start": "nodemon index.js"
   },
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "bcryptjs": "^3.0.3",
-    "body-parser": "^2.2.2",
-    "cookie-parser": "^1.4.7",
-    "cors": "^2.8.6",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "joi": "^18.1.2",
-    "jsonwebtoken": "^9.0.3",
-    "multer": "^2.1.1",
-    "nodemon": "^3.1.14",
-    "sequelize": "^6.37.8",
-    "sha1": "^1.1.1",
-    "sqlite3": "^6.0.1"
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "joi": "^17.13.1",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "sequelize": "^6.37.3",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.1"
   }
 }
