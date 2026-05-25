@@ -11,9 +11,11 @@ const ensureDirectory = (directoryPath) => {
 const uploadsRoot = path.join(__dirname, "..", "uploads");
 const profilePicturesPath = path.join(uploadsRoot, "profile_pictures");
 const bannersPath = path.join(uploadsRoot, "banners");
+const postsPath = path.join(uploadsRoot, "posts");
 
 ensureDirectory(profilePicturesPath);
 ensureDirectory(bannersPath);
+ensureDirectory(postsPath);
 
 const storage = multer.diskStorage({
     destination: (_req, file, cb) => {
@@ -23,6 +25,10 @@ const storage = multer.diskStorage({
 
         if (file.fieldname === "banner") {
             return cb(null, bannersPath);
+        }
+
+        if (file.fieldname === "image") {
+            return cb(null, postsPath);
         }
 
         return cb(new Error("Unsupported file field"));
@@ -66,6 +72,19 @@ const uploadCreatorImages = (req, res, next) => {
     });
 };
 
+const uploadPostImageHandler = uploader.single("image");
+
+const uploadPostImage = (req, res, next) => {
+    uploadPostImageHandler(req, res, (error) => {
+        if (!error) {
+            return next();
+        }
+
+        return res.status(400).json({ message: error.message });
+    });
+};
+
 module.exports = {
-    uploadCreatorImages
+    uploadCreatorImages,
+    uploadPostImage
 };

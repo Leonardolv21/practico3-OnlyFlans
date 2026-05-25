@@ -78,7 +78,8 @@ const creatorService = {
                     [Op.like]: `%${query || ""}%`
                 }
             },
-            attributes: ["id", "name", "profile_picture", "banner"]
+            attributes: ["id", "name", "profile_picture", "banner"],
+            order: [["name", "ASC"]]
         });
     },
     getCreatorProfile: async (creatorId, viewerId) => {

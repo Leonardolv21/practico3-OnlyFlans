@@ -20,8 +20,9 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 require("./routes")(app);
+
 db.sequelize.sync({
-    alter: true
+    //force: true
 }).then(() => {
     console.log("db resync");
 });

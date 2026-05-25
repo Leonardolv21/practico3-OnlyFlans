@@ -6,14 +6,14 @@ const upsertCreatorProfileSchema = Joi.object({
 });
 
 const createGoalSchema = Joi.object({
-    title: Joi.string().min(1).max(120).required(),
-    description: Joi.string().min(1).max(1000).required(),
+    title: Joi.string().trim().min(1).max(120).required(),
+    description: Joi.string().trim().min(1).max(1000).required(),
     is_active: Joi.boolean().optional()
 });
 
 const updateGoalSchema = Joi.object({
-    title: Joi.string().min(1).max(120).optional(),
-    description: Joi.string().min(1).max(1000).optional(),
+    title: Joi.string().trim().min(1).max(120).optional(),
+    description: Joi.string().trim().min(1).max(1000).optional(),
     is_active: Joi.boolean().optional()
 }).min(1);
 

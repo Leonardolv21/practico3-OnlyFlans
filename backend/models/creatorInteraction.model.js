@@ -4,22 +4,25 @@ module.exports = (sequelize) => {
     const CreatorInteraction = sequelize.define(
         "CreatorInteraction",
         {
+            id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                autoIncrement: true,
+                primaryKey: true
+            },
             follower_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                primaryKey: true,
                 unique: false
             },
             creator_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                primaryKey: true,
                 unique: false
             },
             type: {
                 type: DataTypes.STRING,
                 allowNull: false,
-                primaryKey: true,
                 validate: {
                     isIn: [["favorite", "following"]]
                 }
