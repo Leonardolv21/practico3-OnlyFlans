@@ -18,6 +18,7 @@ function AppNavbar() {
         <Navbar.Toggle />
         <Navbar.Collapse>
           <Nav className="me-auto">
+            <Nav.Link as={Link} to="/creators">Directorio Alfabético</Nav.Link>
             <Nav.Link as={Link} to="/creators/search">Buscar creadores</Nav.Link>
             {user?.role === 'creator' && (
               <>

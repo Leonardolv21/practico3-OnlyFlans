@@ -6,6 +6,16 @@ function CreatorIncomePage() {
   const [filters, setFilters] = useState({ startDate: '', endDate: '' })
   const [report, setReport] = useState({ history: [], total_flans: 0 })
 
+  const fetchInitialReport = async () => {
+  const response = await apiClient.get('/creators/me/income', { params: { startDate: '', endDate: '' } })
+  setReport(response.data)
+}
+
+useEffect(() => {
+  fetchInitialReport()
+}, [])
+
+
   const loadReport = async (event) => {
     event.preventDefault()
     const response = await apiClient.get('/creators/me/income', { params: filters })

@@ -9,6 +9,7 @@ import CreatorDashboardPage from './pages/CreatorDashboardPage.jsx'
 import CreatorIncomePage from './pages/CreatorIncomePage.jsx'
 import FollowerFeedPage from './pages/FollowerFeedPage.jsx'
 import FavoritesPage from './pages/FavoritesPage.jsx'
+import CreatorsListPage from './pages/CreatorsListPage.jsx'
 import DonationHistoryPage from './pages/DonationHistoryPage.jsx'
 import './App.css'
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/creators/:id/profile" element={<CreatorProfilePage />} />
 
           <Route element={<ProtectedRoute requiredRole="creator" />}>
+          <Route path="/creators" element={<CreatorsListPage />} />
             <Route path="/creator/dashboard" element={<CreatorDashboardPage />} />
             <Route path="/creator/income" element={<CreatorIncomePage />} />
           </Route>
