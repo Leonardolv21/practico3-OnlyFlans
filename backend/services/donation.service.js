@@ -9,12 +9,22 @@ const donationService = {
             return { error: "CREATOR_NOT_FOUND" };
         }
 
-        return await db.donation.create({
+        const donation = await db.donation.create({
             follower_id: followerId,
             creator_id,
             flan_count,
             support_type: support_type || "flan"
         });
+
+        await db.creatorInteraction.findOrCreate({
+            where: {
+                follower_id: followerId,
+                creator_id,
+                type: "following"
+            }
+        });
+
+        return donation;
     },
     getMyDonationHistory: async (followerId, filters) => {
         const where = { follower_id: followerId };

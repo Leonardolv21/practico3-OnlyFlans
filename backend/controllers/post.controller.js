@@ -1,7 +1,10 @@
 const postService = require("../services/post.service");
 
 exports.createPost = async (req, res) => {
-    const post = await postService.createPost(req.user.id, req.body);
+    const post = await postService.createPost(req.user.id, req.body, req.file);
+    if (post.error === "POST_CONTENT_REQUIRED") {
+        return res.status(400).json({ message: "Post must include text or image" });
+    }
     res.status(201).json(post);
 };
 
